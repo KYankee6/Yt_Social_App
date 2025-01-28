@@ -50,7 +50,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 api("io.insert-koin:koin-android:$koinVersion")
-                implementation("io.ktor:ktor-clinet-android:$ktorVersion")
+                implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
 
