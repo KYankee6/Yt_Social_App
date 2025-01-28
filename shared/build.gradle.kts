@@ -25,7 +25,7 @@ kotlin {
         }
     }
 
-    val coroutinesVersion = "1.10.1"
+    val coroutinesVersion = "1.8.1"
     val koinVersion = "3.4.0"
     val ktorVersion = "2.3.4"
 
@@ -70,16 +70,16 @@ kotlin {
             }
 
         }
-        val iosX64Test by getting
-        val iosArm64Test by getting
-        val iosSimulatorArm64Test by getting
-
-        val iosTest by creating{
-            dependsOn(commonMain)
-            iosX64Test.dependsOn(this)
-            iosArm64Test.dependsOn(this)
-            iosSimulatorArm64Test.dependsOn(this)
-        }
+//        val iosX64Test by getting
+//        val iosArm64Test by getting
+//        val iosSimulatorArm64Test by getting
+//
+//        val iosTest by creating{
+//            dependsOn(commonMain)
+//            iosX64Test.dependsOn(this)
+//            iosArm64Test.dependsOn(this)
+//            iosSimulatorArm64Test.dependsOn(this)
+//        }
     }
 }
 

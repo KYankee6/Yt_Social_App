@@ -11,7 +11,7 @@ internal class AuthRepositoryImpl(
     private val dispatcher: DispatcherProvider,
     private val authService: AuthService
 ) : AuthRepository {
-    override suspend fun signIn(
+    override suspend fun signUp(
         name: String,
         email: String,
         password: String
