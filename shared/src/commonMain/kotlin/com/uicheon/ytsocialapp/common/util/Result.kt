@@ -1,0 +1,10 @@
+package com.uicheon.ytsocialapp.common.util
+
+sealed class Result<T>(
+    val data: T? = null,
+    val message: String? = null
+) {
+    class Error<T>(data: T? = null, message: String) : Result<T>(data)
+    class Success<T>(data: T) : Result<T>(data)
+
+}
