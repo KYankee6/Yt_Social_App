@@ -3,10 +3,12 @@ package com.uicheon.ytsocialapp.android.auth.signup
 import android.widget.Button
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,6 +35,7 @@ import com.uicheon.ytsocialapp.android.common.theming.ButtonHeight
 import com.uicheon.ytsocialapp.android.common.theming.ExtraLargeSpacing
 import com.uicheon.ytsocialapp.android.common.theming.LargeSpacing
 import com.uicheon.ytsocialapp.android.common.theming.MediumSpacing
+import com.uicheon.ytsocialapp.android.common.theming.SmallSpacing
 import com.uicheon.ytsocialapp.android.common.theming.SocialAppTheme
 
 @Composable
@@ -103,6 +106,11 @@ fun SingUpScreen(
             ) {
                 Text(text = stringResource(id = R.string.signup_button_hint))
             }
+
+            GoToSignIn {
+                onNavigateToLogin()
+            }
+
         }
 
         if (uiState.isAuthenticating) {
@@ -123,9 +131,28 @@ fun SingUpScreen(
             }
         }
     )
+}
 
+@Composable
+fun GoToSignIn(
+    modifier: Modifier = Modifier,
+    onNavigateToLogin: () -> Unit
+) {
+    Row(
+        modifier = modifier.fillMaxSize(),
+        horizontalArrangement = Arrangement.spacedBy(SmallSpacing)
+    ) {
+        Text("Have already an account?", style = MaterialTheme.typography.labelSmall)
+        Text(
+            text = "Login",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = modifier.clickable { onNavigateToLogin() }
+        )
+    }
 
 }
+
 
 @Preview
 @Composable

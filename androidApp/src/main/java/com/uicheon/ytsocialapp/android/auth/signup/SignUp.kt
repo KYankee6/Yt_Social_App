@@ -5,10 +5,10 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.uicheon.ytsocialapp.android.destinations.HomeScreenDestination
 import com.uicheon.ytsocialapp.android.destinations.LoginDestination
-import com.uicheon.ytsocialapp.android.home.HomeScreen
+import com.uicheon.ytsocialapp.android.destinations.SignUpDestination
 import org.koin.androidx.compose.koinViewModel
 
-@Destination
+@Destination(start = true)
 @Composable
 fun SignUp(
     navigator: DestinationsNavigator
@@ -20,11 +20,18 @@ fun SignUp(
         onEmailChange = viewModel::updateEmail,
         onPasswordChange = viewModel::updatePassword,
         onNavigateToLogin = {
-            navigator.navigate(LoginDestination)
+            navigator.navigate(LoginDestination) {
+                popUpTo(SignUpDestination.route) {
+                    inclusive = true
+                }
+            }
         },
         onNavigateToHome = {
-            navigator.navigate(HomeScreenDestination)
-
+            navigator.navigate(HomeScreenDestination) {
+                popUpTo(SignUpDestination.route) {
+                    inclusive = true
+                }
+            }
         },
         onSignUpClick = viewModel::signUp
     )
