@@ -7,7 +7,7 @@ import com.uicheon.ytsocialapp.android.destinations.HomeScreenDestination
 import org.koin.androidx.compose.koinViewModel
 
 
-@Destination
+@Destination(start = true)
 @Composable
 fun Login(
     navigator: DestinationsNavigator
@@ -16,7 +16,7 @@ fun Login(
     LoginScreen(
         uiState = viewModel.uiState,
         onEmailChange = viewModel::updateEmail,
-        onPasswordChange = viewModel::updateEmail,
+        onPasswordChange = viewModel::updatePassword,
         onNavigateToHome = {
             navigator.navigate(HomeScreenDestination)
         },

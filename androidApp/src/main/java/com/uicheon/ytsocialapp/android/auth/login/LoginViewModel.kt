@@ -55,7 +55,7 @@ class LoginViewModel(
 
 data class LoginUiState(
     var email: String = "",
-    var password: String = ""
+    var password: String = "",
     var isAuthenticating: Boolean = false,
     var authErrorMessage: String? = null,
     var authenticationSucceeded: Boolean = false
