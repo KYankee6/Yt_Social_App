@@ -121,7 +121,8 @@ fun SingUpScreen(
             if (uiState.authErrorMessage != null) {
                 Toast.makeText(context, uiState.authErrorMessage, Toast.LENGTH_SHORT).show()
             }
-        })
+        }
+    )
 
 
 }
