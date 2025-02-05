@@ -11,7 +11,7 @@ internal class AuthService : KtorApi() {
         setBody(request)
     }.body()
 
-    suspend fun signIn(request: SignInRequest):AuthResponse = client.post{
+    suspend fun signIn(request: SignInRequest): AuthResponse = client.post {
         endPoint(path = "login")
         setBody(request)
     }.body()

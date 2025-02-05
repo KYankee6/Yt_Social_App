@@ -2,6 +2,7 @@ package com.uicheon.ytsocialapp.common.data
 
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
@@ -9,7 +10,7 @@ import io.ktor.http.path
 import io.ktor.http.takeFrom
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-private const val BASE_URL = "http://localhost:8080/"
+private const val BASE_URL = "http://127.0.0.1:8080/"
 
 internal abstract class KtorApi {
     val client = HttpClient {
@@ -17,7 +18,7 @@ internal abstract class KtorApi {
             json(Json {
                 ignoreUnknownKeys = true
                 useAlternativeNames = false
-            })
+          })
         }
     }
 
