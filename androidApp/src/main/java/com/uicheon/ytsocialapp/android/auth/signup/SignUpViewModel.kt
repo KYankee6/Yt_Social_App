@@ -1,5 +1,6 @@
 package com.uicheon.ytsocialapp.android.auth.signup
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -23,6 +24,7 @@ class SignUpViewModel(
 
             uiState = when (authResultData) {
                 is Result.Error -> {
+                    Log.e("signUp()", "wtf? ${authResultData.message}")
                     uiState.copy(
                         isAuthenticating = false,
                         authErrorMessage = authResultData.message
