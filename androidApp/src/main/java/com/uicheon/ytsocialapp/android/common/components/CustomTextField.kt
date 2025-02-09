@@ -85,8 +85,6 @@ fun CustomTextField(
             None
         },
         shape = MaterialTheme.shapes.medium,
-
-
     )
 
 }
