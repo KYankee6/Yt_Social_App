@@ -8,7 +8,7 @@ import com.uicheon.ytsocialapp.android.destinations.LoginDestination
 import com.uicheon.ytsocialapp.android.destinations.SignUpDestination
 import org.koin.androidx.compose.koinViewModel
 
-@Destination(start = true)
+@Destination
 @Composable
 fun SignUp(
     navigator: DestinationsNavigator
