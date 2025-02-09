@@ -2,21 +2,23 @@ package com.uicheon.ytsocialapp.android
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.BottomSheetScaffold
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.uicheon.ytsocialapp.android.common.components.AppBar
+import com.uicheon.ytsocialapp.android.destinations.HomeScreenDestination
+import com.uicheon.ytsocialapp.android.destinations.LoginDestination
 
 @Composable
-fun SocialApp() {
+fun SocialApp(
+    token: String?
+) {
     val navHostController = rememberNavController()
     val systemUiController = rememberSystemUiController()
 
@@ -37,13 +39,22 @@ fun SocialApp() {
         topBar = {
             AppBar(navHostController = navHostController)
         }
-    ){
-        innerPaddings ->
+    ) { innerPaddings ->
         DestinationsNavHost(
             modifier = Modifier.padding(innerPaddings),
             navGraph = NavGraphs.root,
             navController = navHostController
         )
     }
+    LaunchedEffect(key1 = token,
+        block = {
+            if (token != null && token.isEmpty()){
+                navHostController.navigate(LoginDestination.route) {
+                    popUpTo(HomeScreenDestination.route) {
+                        inclusive = true
+                    }
+                }
+            }
+        })
 
 }
