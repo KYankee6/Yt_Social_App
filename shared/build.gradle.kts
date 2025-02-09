@@ -35,9 +35,9 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("co.touchlab:kermit:2.0.4") //Add latest version
 
+                api("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 api("io.insert-koin:koin-core:$koinVersion")
             }
         }
