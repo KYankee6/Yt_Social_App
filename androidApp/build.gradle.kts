@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.compose.compiler)
 
+    kotlin("plugin.serialization") version "1.9.20"
     id("com.google.devtools.ksp") version "2.0.0-1.0.23"
 }
 
@@ -25,7 +26,8 @@ android {
         }
     }
     buildTypes {
-        getByName("release") { isMinifyEnabled = false
+        getByName("release") {
+            isMinifyEnabled = false
         }
     }
     compileOptions {
@@ -35,7 +37,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    applicationVariants.all{
+    applicationVariants.all {
         addJavaSourceFoldersToModel(
             File(buildDir, "generated/ksp/$name/kotlin")
         )
