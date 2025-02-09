@@ -4,14 +4,18 @@ import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.datastore.core.DataStore
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.uicheon.ytsocialapp.android.common.datastore.UserSettings
+import com.uicheon.ytsocialapp.android.common.datastore.toUserSettings
 import com.uicheon.ytsocialapp.auth.domain.usecase.SignInUseCase
 import com.uicheon.ytsocialapp.common.util.Result
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val signInUseCase: SignInUseCase
+    private val signInUseCase: SignInUseCase,
+    private val dataStore: DataStore<UserSettings>
 ) : ViewModel() {
     var uiState by mutableStateOf(LoginUiState())
         private set
@@ -33,6 +37,9 @@ class LoginViewModel(
                 }
 
                 is Result.Success -> {
+                    dataStore.updateData {
+                        authResultData.data!!.toUserSettings()
+                    }
                     uiState.copy(
                         isAuthenticating = false,
                         authenticationSucceeded = true
